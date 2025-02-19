@@ -1,0 +1,141 @@
+/* custom-scrollbar.css */
+::-webkit-scrollbar {
+  width: 3px; /* Change the width here */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0059ff;
+  border-radius: 9px; /* Adjust the radius for rounded corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.rtl {
+  direction: rtl;
+}
+.ltr {
+  direction: ltr;
+}
+.rainbow {
+  background: linear-gradient(
+    90deg,
+    rgb(255, 0, 0),
+    rgb(255, 166, 0),
+    rgb(255, 255, 0),
+    rgb(0, 255, 0),
+    rgb(58, 58, 246),
+    rgb(149, 0, 255),
+    rgb(255, 0, 255)
+  );
+  background-size: 900% 900%;
+  animation: rainbow 9s ease-in-out infinite alternate-reverse;
+  border-radius: 9px;
+}
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/* applied to container */
+.custom-class {
+  background-color: none;
+}
+
+/* applied to button */
+.custom-class > *[data-ut-element="button"] {
+  color: rgb(0 0 0 / 1);
+  background-color: rgb(68, 134, 239);
+}
+
+/* applied to button when uploading */
+.custom-class > *[data-ut-element="button"][data-state="readying"] {
+  background-color: rgba(68, 151, 239, 0.5);
+  color: rgb(0 0 0 / 0.5);
+  cursor: not-allowed;
+}
+
+/* applied to the button when uploading */
+.custom-class > *[data-ut-element="button"][data-state="uploading"] {
+  background-color: rgba(68, 176, 239, 0.5);
+  color: rgb(0 0 0 / 0.5);
+  cursor: not-allowed;
+}
+
+/* applied to the upload indicator when uploading */
+.custom-class > *[data-ut-element="button"][data-state="uploading"]::after {
+  background-color: rgb(12, 108, 234);
+}
+.custom-class-allowed-content > *[data-ut-element="allowed-content"] {
+  display: none;
+}
+/* applied to container */
+.custom-class-core {
+  background-color: none;
+}
+
+/* applied to button */
+.custom-class-core > *[data-ut-element="button"] {
+  background-color: transparent;
+}
+
+/* applied to button when uploading */
+.custom-class-core > *[data-ut-element="button"][data-state="readying"] {
+  background-color: transparent;
+}
+
+/* applied to the button when uploading */
+.custom-class-core > *[data-ut-element="button"][data-state="uploading"] {
+  background-color: transparent;
+}
+
+/* applied to the upload indicator when uploading */
+.custom-class-core
+  > *[data-ut-element="button"][data-state="uploading"]::after {
+  background-color: transparent;
+}
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 20px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #dba8ff;
+  box-shadow: 0 0 0 0 rgba(166, 106, 255, 0.267);
+  animation: l2 1.5s infinite linear;
+  position: relative;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 0 rgba(158, 86, 251, 0.267);
+  animation: inherit;
+  animation-delay: -0.5s;
+}
+.loader:after {
+  animation-delay: -1s;
+}
+@keyframes l2 {
+  100% {
+    box-shadow: 0 0 0 40px #9500ff00;
+  }
+}
+@media (max-width: 600px) {
+  .swiper {
+    width: 100%;
+    height: 300px;
+  }
+}

@@ -1,0 +1,1 @@
+ALTER TABLE "mftplus-categories" ADD COLUMN "link" text;

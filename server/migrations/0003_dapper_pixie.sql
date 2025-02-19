@@ -1,0 +1,1 @@
+ALTER TABLE "mftplus-users" ALTER COLUMN "pin" SET DEFAULT 'empty';

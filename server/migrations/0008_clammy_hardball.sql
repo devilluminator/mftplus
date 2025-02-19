@@ -1,0 +1,1 @@
+ALTER TABLE "harchi-products" ALTER COLUMN "created_at" SET DEFAULT '2025-02-05T10:05:53.443Z';

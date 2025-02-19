@@ -1,0 +1,22 @@
+[
+  {
+    "name": "داشبورد",
+    "icon": "LayoutDashboardIcon",
+    "link": "/admin-dashboard"
+  },
+  {
+    "name": "کاربران",
+    "icon": "UserRoundCheckIcon",
+    "link": "/admin-dashboard/users"
+  },
+  {
+    "name": "محصولات",
+    "icon": "SquareChartGanttIcon",
+    "link": "/admin-dashboard/products"
+  },
+  {
+    "name": "پشتیبانی",
+    "icon": "MessageSquareText",
+    "link": "/admin-dashboard/online-support-team"
+  }
+]

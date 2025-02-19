@@ -1,0 +1,37 @@
+[
+  {
+    "title": "صــفحه اصــلی",
+    "href": "/",
+    "description": "A modal dialog that interrupts the user with important content and expects a response."
+  },
+  {
+    "title": "لبـــاس",
+    "href": "/dress",
+    "description": "For sighted users to preview content available behind a link."
+  },
+  {
+    "title": "کـــفـش",
+    "href": "/shoes",
+    "description": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar."
+  },
+  {
+    "title": "اکسســـــوری",
+    "href": "/accessory",
+    "description": "Visually or semantically separates content."
+  },
+  {
+    "title": "کـــارت هـــدیـــه",
+    "href": "/gifts",
+    "description": "Visually or semantically separates content."
+  },
+  {
+    "title": "پیشــنهاد ما",
+    "href": "/suggestions",
+    "description": "Visually or semantically separates content."
+  },
+  {
+    "title": "فــروش ویــژه",
+    "href": "/off",
+    "description": "Visually or semantically separates content."
+  }
+]
