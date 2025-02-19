@@ -11,8 +11,8 @@ import { desc } from "drizzle-orm";
 import { products as productsTable } from "@/server/db/schema";
 import type { Metadata, ResolvingMetadata } from "next";
 type Props = {
-  params: { category: string };
-  searchParams: SearchParams;
+  params: Promise<{ category: string }>;
+  searchParams: Promise<SearchParams>;
 };
 
 // ✅ Dynamic Metadata
@@ -21,7 +21,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   // read route params
-  const { category } = params;
+  const { category } = await params;
 
   // fetch data
   const product = await db.query.products.findFirst({

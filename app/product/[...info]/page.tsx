@@ -7,8 +7,8 @@ import { type SearchParams } from "nuqs/server";
 import type { Metadata, ResolvingMetadata } from "next";
 
 type Props = {
-  params: { info: string };
-  searchParams: SearchParams;
+  params: Promise<{ info: string }>;
+  searchParams: Promise<SearchParams>;
 };
 
 // ✅ Dynamic Metadata
@@ -17,7 +17,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   // read route params
-  const { info } = params;
+  const { info } = await params;
 
   // fetch data
   const product = await db.query.products.findFirst({
