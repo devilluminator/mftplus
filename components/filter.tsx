@@ -166,7 +166,7 @@ function Filter(props: FilterProps) {
             <SelectValue placeholder='سایز' />
           </SelectTrigger>
           <SelectContent className='rtl'>
-            {props.sizes.map((size, index) => (
+            {[...new Set(props.sizes)].map((size, index) => (
               <SelectItem
                 key={index + "_size"}
                 value={size ? size.toLocaleUpperCase() : ""}>

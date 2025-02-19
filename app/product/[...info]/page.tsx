@@ -3,7 +3,37 @@ import { db } from "@/server/db";
 import { removeCommas } from "@/lib/calculate-percentage";
 import Image from "next/image";
 import AddToCard from "@/components/add-to-card";
+import { type SearchParams } from "nuqs/server";
+import type { Metadata, ResolvingMetadata } from "next";
 
+type Props = {
+  params: { info: string };
+  searchParams: SearchParams;
+};
+
+// ✅ Dynamic Metadata
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  // read route params
+  const { info } = params;
+
+  // fetch data
+  const product = await db.query.products.findFirst({
+    where: (products, { eq }) => eq(products.code, info[0]),
+  });
+
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: product?.name,
+    openGraph: {
+      images: [product?.og_image!, ...previousImages],
+    },
+  };
+}
 // Next.js will invalidate the cache when a
 // request comes in, at most once every 60 seconds.
 export const revalidate = 60;
@@ -17,7 +47,7 @@ export async function generateStaticParams() {
   const products = await db.query.products.findMany({
     orderBy: (products, { desc }) => [desc(products.id)],
   });
-  return products.slice(0, 2).map((product) => ({
+  return products.slice(0, 3).map((product) => ({
     info: [product.code?.toString(), product.name?.toString()],
   }));
 }

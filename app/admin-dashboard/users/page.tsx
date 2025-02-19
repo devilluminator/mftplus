@@ -18,7 +18,7 @@ function UsersPage() {
   const { queryFn, queryKey } = usersQueryOptions();
   const { data, refetch, isFetching } = useQuery(queryKey, () => queryFn());
   return (
-    <Table className='backdrop-blur-sm rtl'>
+    <Table className='self-start backdrop-blur-sm mb-[39vh] rtl'>
       <TableCaption className='min-h-[60px]'>
         لیست کاربران - تعداد {data?.data?.users.length}
         <Spinner
@@ -31,20 +31,20 @@ function UsersPage() {
           <TableHead className='w-[60px]'>ID</TableHead>
           <TableHead>Full-Name</TableHead>
           <TableHead>Phone-Number</TableHead>
-          <TableHead className='md:table-cell hidden'>Email</TableHead>
-          <TableHead className='md:table-cell hidden'>Address</TableHead>
+          <TableHead className='hidden md:table-cell'>Email</TableHead>
+          <TableHead className='hidden md:table-cell'>Address</TableHead>
           <TableHead>Access-Level</TableHead>
           <TableHead>More</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {data?.data?.users.map((user) => (
+        {data?.data?.users.map((user, index) => (
           <TableRow key={user.id} className='[&>*]:text-right'>
-            <TableCell className='font-medium'>{user.id}</TableCell>
+            <TableCell className='font-medium'>{index + 1}</TableCell>
             <TableCell>{user.full_name}</TableCell>
             <TableCell>{user.phone_number}</TableCell>
-            <TableCell className='md:table-cell hidden'>{user.email}</TableCell>
-            <TableCell className='md:table-cell hidden'>
+            <TableCell className='hidden md:table-cell'>{user.email}</TableCell>
+            <TableCell className='hidden md:table-cell'>
               {user.address}
             </TableCell>
             <TableCell className='capitalize'>{user.role}</TableCell>

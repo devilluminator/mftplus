@@ -9,6 +9,35 @@ import ProductCard from "@/components/product/card";
 import { removeCommas } from "@/lib/calculate-percentage";
 import { desc } from "drizzle-orm";
 import { products as productsTable } from "@/server/db/schema";
+import type { Metadata, ResolvingMetadata } from "next";
+type Props = {
+  params: { category: string };
+  searchParams: SearchParams;
+};
+
+// ✅ Dynamic Metadata
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  // read route params
+  const { category } = params;
+
+  // fetch data
+  const product = await db.query.products.findFirst({
+    where: (products, { eq }) => eq(products.category, category),
+  });
+
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: product?.category,
+    openGraph: {
+      images: [product?.og_image!, ...previousImages],
+    },
+  };
+}
 
 function OurCategoriesPage({
   params,
@@ -29,7 +58,6 @@ function OurCategoriesPage({
     return (
       <div className='flex justify-center items-center border rounded-md min-h-[72vh] size-full text-xl container'>
         <p className='shadow-md backdrop-blur-sm p-3 border rounded-md'>
-          {" "}
           404 | This page could not be found.
         </p>
       </div>

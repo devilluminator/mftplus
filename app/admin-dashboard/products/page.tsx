@@ -13,7 +13,7 @@ import { useQuery } from "@tanstack/react-query";
 import { productsQueryOptions } from "@/context/product-query";
 import { Spinner } from "@/components/ui/spinner";
 import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
+import { Search, LucideInfo } from "lucide-react";
 import AddProduct from "@/components/product/add-product";
 import Image from "next/image";
 import { formattedDate } from "@/lib/format-date";
@@ -21,6 +21,12 @@ import EditProduct from "@/components/product/edit-product";
 import { colorsPallet } from "@/lib/hex-colors";
 import DeleteProduct from "@/components/product/delete-product";
 import ShowMoreInfo from "./more-info";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
 
 function ProductsPage() {
   const { queryFn, queryKey } = productsQueryOptions();
@@ -56,6 +62,24 @@ function ProductsPage() {
           <Search className='right-1 absolute' />
         </span>
       </div>
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button
+            type='button'
+            variant='link'
+            className='text-emerald-600 dark:text-emerald-300'>
+            یه کوچولو توضیح <LucideInfo />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className='text-sm text-pretty rtl'>
+          <p>
+            برای حفظ aspect-ratio تصویر محصول بهتره روی ¾ سایز رو نگه داریم مثال
+            512 در 768
+          </p>
+          <p>فرمت عکس webp باشه خیلی بهتره هم حجم کمی داره هم سرعت لود بالا</p>
+        </PopoverContent>
+      </Popover>
+
       <Table className='backdrop-blur-sm rtl'>
         <TableCaption className='min-h-[60px]'>
           لیست کالاهای موجود - {data?.data?.products.length}
