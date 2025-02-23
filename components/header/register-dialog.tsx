@@ -85,7 +85,7 @@ function RegisterDialog() {
       phone_number: phoneNumberInputRef.current?.value,
     });
     if (!phone_number || phone_number.trim().length === 0)
-      return toast.error("ایمیل وارد نشده است", {
+      return toast.error("شماره همراه وارد نشده است", {
         position: "top-right",
         className: "rtl flex justify-start items-center gap-3 ",
       });
